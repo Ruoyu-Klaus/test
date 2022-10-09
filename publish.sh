@@ -14,4 +14,4 @@ git commit -m "$message"
 
 echo $message
 
-git push -u origin "$current"
+git push -u origin $current_branch
