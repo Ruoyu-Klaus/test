@@ -1,10 +1,15 @@
 #!/bin/bash
 
 current_branch=$(git branch --show-current)
-message=${1:-publish blog}
+status=$(git status)
+chenged=$(git status | grep ".md" | sed 's/.md//;s/^\t*//' | tr '\n' ',' | sed 's/,$/\n/' | cut -b -20)
+message=${1:-📝publish blog: 🏷️ $chenged}
 
+echo $status
 echo $message
-echo $current_branch
+
+git add .
+git commit -m "$message"
 
 
 
